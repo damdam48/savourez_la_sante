@@ -57,6 +57,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank]
     private ?string $lastName = null;
 
+    #[ORM\PrePersist]
+    public function autoSetCreatedAt(): static
+    {
+        if ($this->createdAt === null) {
+            $this->setCreatedAt(new \DateTimeImmutable());
+        }
+
+        return $this;
+    }
+
+    #[ORM\PreUpdate]
+    public function autoSetUpdatedAt(): static
+    {
+        $this->setUpdatedAt(new \DateTimeImmutable());
+
+        return $this;
+    }
+
+
+
     public function getId(): ?int
     {
         return $this->id;

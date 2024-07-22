@@ -26,8 +26,8 @@ class AppFixtures extends Fixture
                 new User(),
                 'Admin'
             ))
-            ->setRoles(['ROLE_ADMIN'])
-            ->setCreatedAt(new \DateTimeImmutable());
+            ->setRoles(['ROLE_ADMIN']);
+            // ->setCreatedAt(new \DateTimeImmutable());
 
         $manager->persist($user);
         $manager->flush();

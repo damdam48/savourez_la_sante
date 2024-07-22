@@ -8,9 +8,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+#[ORM\HasLifecycleCallbacks]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use DateTimeTrait;
@@ -56,24 +58,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     )]
     #[Assert\NotBlank]
     private ?string $lastName = null;
-
-    #[ORM\PrePersist]
-    public function autoSetCreatedAt(): static
-    {
-        if ($this->createdAt === null) {
-            $this->setCreatedAt(new \DateTimeImmutable());
-        }
-
-        return $this;
-    }
-
-    #[ORM\PreUpdate]
-    public function autoSetUpdatedAt(): static
-    {
-        $this->setUpdatedAt(new \DateTimeImmutable());
-
-        return $this;
-    }
 
 
 

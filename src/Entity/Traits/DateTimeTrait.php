@@ -47,6 +47,7 @@ trait DateTimeTrait
         return $this;
     }
 
+    #[ORM\PreUpdate]
     public function autoSetUpdatedAt(): static
     {
         $this->setUpdatedAt(new \DateTimeImmutable());

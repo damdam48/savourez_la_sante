@@ -26,7 +26,6 @@ class UserType extends AbstractType
                 'label' => 'Email',
                 'attr' => [
                     'placeholder' => 'email@domain.com',
-                    'class' => 'form-label',
                 ],
             ])
             ->add('password', RepeatedType::class, [

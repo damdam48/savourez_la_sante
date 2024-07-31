@@ -1,28 +1,45 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	S’inscrire
+	S’inscrire |
 	{{ parent() }}
 {% endblock %}
 
-
 {% block body %}
-	<section class="login-container">
-		<h1 class="text-center">S’inscrire</h1>
-		<p class="text-center">
-			Créez-vous un compte pour avoir accès a Savourer la santée
-		</p>
-		{{ form_start(form) }}
-		<div class="row">
-			<div class="col-md-6">{{ form_row(form.firstName) }}</div>
-			<div class="col-md-6">{{ form_row(form.lastName) }}</div>
+	<section class="register-container py-5">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-8">
+					<div class="card shadow-sm">
+						<div class="card-body">
+							<h1 class="text-center mb-4">S’inscrire</h1>
+							<p class="text-center mb-4">
+								Créez-vous un compte pour avoir accès à Savourer la santé
+							</p>
+							{{ form_start(form) }}
+							<div class="row">
+								<div class="col-md-6 mb-3">{{ form_row(form.firstName) }}</div>
+								<div class="col-md-6 mb-3">{{ form_row(form.lastName) }}</div>
+							</div>
+
+
+							{{ form_widget(form, { 'attr': {'class': 'form-control mb-3'} }) }}
+
+							
+							<button type="submit" class="btn btn-dark w-100">S'inscrire</button>
+
+
+							{{ form_end(form) }}
+
+
+							<p class="text-center mt-4">
+								Vous avez déjà un compte ?
+								<a href="{{ path('app.login') }}">Connectez-vous</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		{{ form_widget(form) }}
-		<button type="submit" class="btn btn-dark">S'inscrire</button>
-		{{ form_end(form) }}
-		<p class="text-center mt-4">
-			Vous avez déjà un compte ?
-			<a href="{{ path('app.login') }}">Connectez-vous</a>
-		</p>
 	</section>
 {% endblock %}

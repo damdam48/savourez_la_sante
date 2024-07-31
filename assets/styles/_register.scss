@@ -1,0 +1,63 @@
+body {
+    background: #f7f7f7;
+}
+
+.card {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+}
+
+.form-outline {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-outline input {
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+}
+
+.form-outline label {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background-color: #fff;
+    padding: 0 5px;
+    font-size: 0.875rem;
+    color: #999;
+    transition: all 0.3s;
+}
+
+.form-outline input:focus + label,
+.form-outline input:not(:placeholder-shown) + label {
+    top: -25px;
+    left: 10px;
+    font-size: 0.75rem;
+    color: #007bff;
+}
+
+// Button outline style with hover effect
+.btn-outline {
+    background-color: transparent;
+    border: 0.5px solid #FFB534;
+    color: black;
+    transition: all 0.3s;
+
+    &:hover {
+        background-color: #FFB534;
+        color: white;
+        border-color: black;
+    }
+}
+
+.vh-100 {
+    height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+img {
+    border-radius: 25px;
+}

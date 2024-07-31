@@ -1,8 +1,29 @@
 @import "~bootstrap/scss/bootstrap";
+// Bootstrap Icons
+@import "~bootstrap-icons/font/bootstrap-icons";
+
+@import "banner";
+@import "btnOutline";
+@import "login";
+@import "register";
+@import "separator";
 
 
 
 body {
-    background-color: lightgray;
+    background-color: #F5F4F1;
+
+    
+}
+
+.outline-admin {
+    background-color: transparent;
+    border: 0.5px solid #FFB534;
+
+    &:hover {
+        background-color: #FFB534;
+        color: white;
+        border-color: black;
+    }
 
 }

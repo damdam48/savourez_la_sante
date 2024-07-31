@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	admin | Savourez la santé
+{% endblock %}
+
+
+{% block body %}
+	<section class="models">
+		{% include 'Frontend/Home/_banner.html.twig' %}
+	</section>
+<h1>Bienvenue sur la page d'administration de recette</h1>
+
+<a href="/admin/recette/create" class="btn btn-outline-primary">Ajouter une recette</a>
+
+{% endblock %}

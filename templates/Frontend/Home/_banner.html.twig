@@ -2,7 +2,7 @@
 
 {% block body %}
 	<section>
-		<nav class="navbar navbar-expand-lg custom-navbar">
+		<nav class="navbar navbar-expand-lg custom-navbar separator">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="{{ '/' }}">
 					<h1 class="ms-5 mb-0">Savourez la santé</h1>
@@ -35,7 +35,7 @@
 
 					{% if is_granted('ROLE_ADMIN') %}
 						
-						<a class="outline-admin btn text-danger" href="#">Admin</a>
+						<a class="outline-admin btn text-danger me-5" href="#">Admin</a>
 					{% endif %}
 				</div>
 			</div>

@@ -1,0 +1,19 @@
+/* Style pour la bordure pointillée sous la navbar */
+/* Ajoutez cette classe à votre fichier CSS */
+.separator {
+
+    position: relative;
+}
+
+.separator::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -5px;
+    margin-left: 4%;
+
+    width: 92%;
+    border-bottom: 2px dashed #FFB534;
+
+}
+

@@ -30,6 +30,6 @@
 		{{ form_widget(form.preparation, {'attr': {'class': 'form-control'}}) }}
 		{{ form_errors(form.preparation) }}
 	</div>
-	<button type="submit" class="btn btn-primary">Enregistrer</button>
+	<button type="submit" class="btn btn-primary">{{ buttonLabel|default('Enregistrer') }}</button>
 	{{ form_end(form) }}
 {% endblock %}

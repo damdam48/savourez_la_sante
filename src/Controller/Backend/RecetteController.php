@@ -24,12 +24,15 @@ class RecetteController extends AbstractController
     #[Route('', name: '.index', methods: ['GET'])]
     public function index(): Response
     {
+
+        $recettes = $this->recetteRepository->findAll();
         return $this->render('backend/recette/index.html.twig', [
-            'controller_name' => 'RecetteController',
+            'recettes' => $recettes,
         ]);
     }
 
-    // create
+
+// create
     #[Route('/create', name: '.create', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
@@ -51,4 +54,40 @@ class RecetteController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
+//update
+#[Route('/{id}/edit', name: '.edit', methods: ['GET', 'POST'])]
+public function edit(Request $request, Recette $recette): Response
+{
+    $form = $this->createForm(RecetteType::class, $recette);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        $this->em->flush();
+
+        $this->addFlash('success', 'La recette a bien été mise à jour.');
+
+        return $this->redirectToRoute('admin.recette.index');
+    }
+
+    return $this->render('backend/recette/edit.html.twig', [
+        'form' => $form,
+    ]);
+}
+
+// delete
+#[Route('/{id}/delete', name: '.delete', methods: ['POST'])]
+public function delete(Request $request, Recette $recette): Response
+{
+    if ($this->isCsrfTokenValid('delete' . $recette->getId(), $request->request->get('token'))) {
+        $this->em->remove($recette);
+        $this->em->flush();
+
+        $this->addFlash('success', 'La recette a bien été supprimée.');
+    }
+
+    return $this->redirectToRoute('admin.recette.index');
+}
+
 }

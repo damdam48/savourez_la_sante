@@ -9,14 +9,21 @@ Ce projet est une application Symfony. Suivez les étapes ci-dessous pour config
 - Node.js (version 14 ou supérieure)
 - Yarn
 
+
 ## Installation
 
 1. Clonez le dépôt du projet :
-
    ```bash
    git clone https://github.com/votre-utilisateur/savourez_la_sante.git
    cd savourez_la_sante
    ```
+
+### Prés-installation
+
+1. Créée un fichier .env.local
+    ```bash
+    DATABASE_URL="mysql://UTILISATEUR:UTILISATEUR@IP:PORT/savourez_la_sante?serverVersion=8.0.36&charset=utf8mb4"
+    ```
 
 2. Installez les dépendances PHP :
    ```bash

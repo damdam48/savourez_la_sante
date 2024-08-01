@@ -31,10 +31,11 @@
 						<td>{{ recette.createdAt ? recette.createdAt|date('d/m/Y H:i') : 'N/A' }}</td>
 						<td>
 							<a href="{{ path('admin.recette.edit', {id: recette.id}) }}" class="btn btn-sm btn-primary">Modifier</a>
-							<form action="{{ path('admin.recette.delete', {id: recette.id}) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?')">
+							<form action="{{ path('admin.recette.delete', {id: recette.id}) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette recette ?')">
 								<input type="hidden" name="token" value="{{ csrf_token('delete' ~ recette.id) }}">
 								<button type="submit" class="btn btn-danger">Supprimer</button>
 							</form>
+
 							{# <twig:DeleteForm action="{{ path('admin.recette.delete', {id: recette.id}) }}" message="Êtes-vous sûr de vouloir supprimer cette méthode de livraison" csrftoken="{{ csrf_token('delete' ~ delivery.id) }}"/> #}
 						</td>
 					</tr>

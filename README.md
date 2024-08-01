@@ -18,22 +18,20 @@ Ce projet est une application Symfony. Suivez les étapes ci-dessous pour config
    cd savourez_la_sante
    ```
 
-### Prés-installation
-
-1. Créée un fichier .env.local
+2. Créée un fichier .env.local
     ```bash
     DATABASE_URL="mysql://UTILISATEUR:UTILISATEUR@IP:PORT/savourez_la_sante?serverVersion=8.0.36&charset=utf8mb4"
     ```
 
-2. Installez les dépendances PHP :
+3. Installez les dépendances PHP :
    ```bash
    composer install
    ```
-3. Installez les dépendances JavaScript :
+4. Installez les dépendances JavaScript :
    ```bash
    yarn install
    ```
-4. Configurez les variables d'environnement :
+5. Configurez les variables d'environnement :
    ```bash
    composer dump-env dev
    ```

@@ -6,52 +6,44 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait DateTimeTrait
 {
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private ?\DateTimeInterface $createdAt = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private ?\DateTimeInterface $updatedAt = null;
 
-    private ?\DateTimeImmutable $updatedAt = null;
-
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
 
-    #[ORM\PrePersist]
-    public function autoSetCreatedAt(): static
-    {
-        if ($this->createdAt === null) {
-            $this->setCreatedAt(new \DateTimeImmutable());
-        }
-
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeImmutable
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
-
         return $this;
     }
 
-    #[ORM\PreUpdate]
-    public function autoSetUpdatedAt(): static
+    #[ORM\PrePersist]
+    public function onPrePersist(): void
     {
-        $this->setUpdatedAt(new \DateTimeImmutable());
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+    }
 
-        return $this;
+    #[ORM\PreUpdate]
+    public function onPreUpdate(): void
+    {
+        $this->updatedAt = new \DateTime();
     }
 }

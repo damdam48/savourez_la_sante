@@ -3,11 +3,12 @@ namespace App\Form;
 
 use App\Entity\Product\Recette;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class RecetteType extends AbstractType
 {
@@ -27,11 +28,12 @@ class RecetteType extends AbstractType
                     'class' => 'form-check-input',
                 ],
             ])
-            ->add('img', TextType::class, [
+            ->add('imageFile', VichImageType::class, [
                 'label' => 'Image',
-                'attr' => [
-                    'class' => 'form-control',
-                ],
+                'required' => false,
+                'allow_delete' => false,
+                'download_uri' => false,
+                'image_uri' => true,
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',

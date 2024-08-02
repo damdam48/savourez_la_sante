@@ -4,14 +4,16 @@ namespace App\Entity\Product;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use App\Entity\Traits\DateTimeTrait;
 use App\Repository\Product\RecetteRepository;
 
 #[ORM\Entity(repositoryClass: RecetteRepository::class)]
 #[ORM\HasLifecycleCallbacks]
+#[Vich\Uploadable]
 class Recette
 {
-
     use DateTimeTrait;
 
     #[ORM\Id]
@@ -25,8 +27,11 @@ class Recette
     #[ORM\Column]
     private ?bool $online = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $img = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imageName = null;
+
+    #[Vich\UploadableField(mapping: 'recette_image', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
@@ -50,7 +55,6 @@ class Recette
     public function setName(string $name): static
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -62,20 +66,32 @@ class Recette
     public function setOnline(bool $online): static
     {
         $this->online = $online;
-
         return $this;
     }
 
-    public function getImg(): ?string
+    public function getImageName(): ?string
     {
-        return $this->img;
+        return $this->imageName;
     }
 
-    public function setImg(string $img): static
+    public function setImageName(?string $imageName): static
     {
-        $this->img = $img;
-
+        $this->imageName = $imageName;
         return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if ($imageFile) {
+            $this->setUpdatedAt(new \DateTime()); // Utiliser le setter du trait
+        }
     }
 
     public function getDescription(): ?string
@@ -86,7 +102,6 @@ class Recette
     public function setDescription(string $description): static
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -98,7 +113,6 @@ class Recette
     public function setListeIngredient(string $listeIngredient): static
     {
         $this->listeIngredient = $listeIngredient;
-
         return $this;
     }
 
@@ -110,7 +124,6 @@ class Recette
     public function setPreparation(string $preparation): static
     {
         $this->preparation = $preparation;
-
         return $this;
     }
 }

@@ -26,16 +26,16 @@
 						</li>
 					</ul>
 					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-						<a class="btn btn-outline me-5" href="{{ '/logout' }}">Se déconnecter<i class="bi bi-box-arrow-right ms-2"></i>
+						<a class="btn radius btn-outline me-5" href="{{ '/logout' }}">Se déconnecter<i class="bi bi-box-arrow-right ms-2"></i>
 						</a>
 					{% else %}
-						<a class="btn btn-outline me-5" href="{{ '/login' }}">Se connecter<i class="bi bi-box-arrow-in-right ms-2"></i>
+						<a class="btn radius btn-outline me-5" href="{{ '/login' }}">Se connecter<i class="bi bi-box-arrow-in-right ms-2"></i>
 						</a>
 					{% endif %}
 
 					{% if is_granted('ROLE_ADMIN') %}
 
-						<a class="outline-admin btn text-danger me-5" href="/admin/recette">Admin</a>
+						<a class="outline-admin btn radius text-danger me-5" href="/admin/recette">Admin</a>
 					{% endif %}
 				</div>
 			</div>

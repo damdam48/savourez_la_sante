@@ -1,34 +1,61 @@
 .admin-title {
     color: red;
     text-align: center;
-    margin: 50px 35px;
+    margin: 50px 20px;
 }
 
 .btn-margin {
-    margin: 0 35px;
-}
-
-.btnBlue .btnRed {
-    background-color: white;
+    margin: 0 20px;
 }
 
 .admin-recipes-list {
-    margin: 0 35px;
+    margin: 0 20px;
 }
 
-.table .actions {
-    display: flex;
-    gap: 10px;
+.card {
+    border: 1px solid #FFB534;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.table .actions form {
-    display: inline;
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+}
+
+.card-img-top {
+    width: 80%;
+    height: auto;
+    display: block;
+    margin-bottom: 15px;
+    border-radius: 8px; /* Ajouter des coins arrondis à l'image */
+    margin: 0 auto; /* Centrer l'image */
+}
+
+.card-text small {
+    font-size: 0.875rem;
+    color: #555;
+}
+
+.card .btn {
+    width: 48%;
 }
 
 @media (max-width: 768px) {
-    .table .actions {
-        flex-direction: column;
-        align-items: center;
+    .card .btn {
+        width: 100%;
+        margin-bottom: 10px;
     }
 
+    .card .btn:last-child {
+        margin-bottom: 0;
+    }
+
+    .showOnPc {
+        display: none;
+    }
 }

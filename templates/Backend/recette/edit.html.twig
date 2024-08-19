@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Mise a jour d'une recette
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="container mt-2">
+		<h1 class="text-center">Mise a jour d'une recette</h1>
+		{% include 'Backend/recette/_form.html.twig' with { buttonLabel: 'Modifier' } %}
+	</section>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Création d'une recette
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <section class="models">
+        {% include 'Frontend/Home/_banner.html.twig' %}
+    </section>
+
+	<h1 class="admin-title">Création d'une recette</h1>
+
+	<section >
+		<div class="container mt-2 container-border">
+			<div class="margin-container-border">{% include 'Backend/recette/_form.html.twig' with { buttonLabel: 'Créer' } %}</div>
+		</div>
+	</section>
+{% endblock %}

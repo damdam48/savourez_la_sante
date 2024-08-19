@@ -26,7 +26,7 @@
 						</li>
 					</ul>
 					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-						<a class="btn radius btn-outline me-5" href="{{ '/logout' }}">Se déconnecter<i class="bi bi-box-arrow-right ms-2"></i>
+						<a class="btn radius btn-outline me-5" href="{{ '/logout' }}" data-turbo="false">Se déconnecter<i class="bi bi-box-arrow-right ms-2"></i>
 						</a>
 					{% else %}
 						<a class="btn radius btn-outline me-5" href="{{ '/login' }}">Se connecter<i class="bi bi-box-arrow-in-right ms-2"></i>

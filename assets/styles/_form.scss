@@ -1,0 +1,6 @@
+.form-control {
+    &:focus, &:focus-visible {
+        border-color: #FFB534;
+        box-shadow: 0 0 0 0.25rem rgba(255, 181, 52, 0.24);
+    }
+}

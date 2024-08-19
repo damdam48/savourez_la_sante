@@ -6,8 +6,22 @@
 {% endblock %}
 
 {% block body %}
-	<section class="container mt-2">
-		<h1 class="text-center">Mise a jour d'une recette</h1>
-		{% include 'Backend/recette/_form.html.twig' with { buttonLabel: 'Modifier' } %}
+	<section class="models">
+		{% include 'Frontend/Home/_banner.html.twig' %}
+	</section>
+
+	<h1 class="admin-title">Mise a jour d'une recette</h1>
+
+	<section>
+
+		<a href="{{ '/admin/recette' }}" class="btn radius btn-margin btn-outline-primary ms-5 mb-4">
+			Retour sur la page admin
+		</a>
+
+
+		<div class="container mt-2 card-edit">
+			<div class="margin-container-border">{% include 'Backend/recette/_form.html.twig' with { buttonLabel: 'Modifier' } %}</div>
+		</div>
+
 	</section>
 {% endblock %}

@@ -2,49 +2,25 @@
 // Bootstrap Icons
 @import "~bootstrap-icons/font/bootstrap-icons";
 
+@import "btnOutline";
 @import "radius";
 @import "banner";
-@import "btnOutline";
+
 @import "login";
 @import "register";
 @import "separator";
+@import "card";
 @import "indexAdmin";
+@import "margin";
+@import "img";
 
 
 
 body {
     background-color: #F5F4F1;
-
     
 }
 
-img {
-    max-width: 100%;
-    object-fit: cover;
-}
 
-.outline-admin {
-    background-color: transparent;
-    border: 0.5px solid #FFB534;
 
-    &:hover {
-        background-color: #FFB534;
-        color: white;
-        border-color: black;
-    }
 
-}
-
-.container-border{
-    // flex: 1 1 calc(20% - 20px);
-    // box-sizing: border-box;
-    border: 1px solid #FFB534;
-    border-radius: 15px;
-    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    // overflow: hidden;
-    // max-width: 300px;
-}
-
-.margin-container-border{
-    margin-top: 20xp;
-}

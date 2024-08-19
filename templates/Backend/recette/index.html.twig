@@ -8,12 +8,13 @@
     <section class="models">
         {% include 'Frontend/Home/_banner.html.twig' %}
     </section>
-    <h1 class="admin-title">Bienvenue sur la page d'administration de recette</h1>
+    <section>
+    <h1 class="admin-title">Bienvenue sur la page d'administration des recettes</h1>
 
-    <a href="{{ path('admin.recette.create') }}" class="btn radius btn-margin btn-outline-primary">Ajouter une recette</a>
+    <a href="{{ path('admin.recette.create') }}" class="btn radius ms-5 btn-margin btn-outline-primary">Ajouter une recette</a>
 
     <div class="mt-4 admin-recipes-list">
-        <h2>Liste des recettes</h2>
+        <h2 class="ms-4">Liste des recettes</h2>
         <div class="card-container mt-3">
             {% for recette in recettes %}
                 <div class="card">
@@ -52,4 +53,5 @@
             {% endfor %}
         </div>
     </div>
+    </section>
 {% endblock %}

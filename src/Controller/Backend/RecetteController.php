@@ -26,7 +26,7 @@ class RecetteController extends AbstractController
     {
 
         $recettes = $this->recetteRepository->findAll();
-        return $this->render('backend/recette/index.html.twig', [
+        return $this->render('Backend/recette/index.html.twig', [
             'recettes' => $recettes,
         ]);
     }
@@ -50,7 +50,7 @@ class RecetteController extends AbstractController
             return $this->redirectToRoute('admin.recette.index');
         }
 
-        return $this->render('backend/recette/create.html.twig', [
+        return $this->render('Backend/recette/create.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -71,7 +71,7 @@ public function edit(Request $request, Recette $recette): Response
         return $this->redirectToRoute('admin.recette.index');
     }
 
-    return $this->render('backend/recette/edit.html.twig', [
+    return $this->render('Backend/recette/edit.html.twig', [
         'form' => $form,
     ]);
 }

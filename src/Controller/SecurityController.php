@@ -17,7 +17,7 @@ class SecurityController extends AbstractController
     #[Route('/login', name: 'app.login', methods: ['GET', 'POST'])]
     public function index(AuthenticationUtils $authUtils): Response
     {
-        return $this->render('Security/login.html.twig', [
+        return $this->render('security/login.html.twig', [
             'error' => $authUtils->getLastAuthenticationError(),
             'lastUsername' => $authUtils->getLastUsername(),
         ]);
@@ -42,10 +42,10 @@ class SecurityController extends AbstractController
 
             $this->addFlash('success', 'Votre compte a bien été créé.');
 
-            return $this->redirectToRoute('/');
+            return $this->redirectToRoute('app.login');
         }
 
-        return $this->render('Security/register.html.twig', [
+        return $this->render('security/register.html.twig', [
             'form' => $form,
         ]);
     }

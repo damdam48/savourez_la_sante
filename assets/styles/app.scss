@@ -22,6 +22,20 @@ body {
     
 }
 
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px; /* Ajoute un peu d'espace autour du texte */
+    margin-top: 50px;
+}
+
+.header-content {
+    width: 60%;
+    text-align: center;
+    margin: 0 auto;
+}
+
 
 h1 {
     font-size: 24px;
@@ -39,9 +53,6 @@ footer {
     padding: 20px;
     margin-top: 20px;
 }
-
-
-
 
 
 

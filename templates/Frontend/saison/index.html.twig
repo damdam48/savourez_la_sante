@@ -13,7 +13,7 @@
     <section>
         <h1 class="text-center mt-5 mb-5">
             <span>Ci vous trouverez toutes les recettes
-                {{ saison.name }}</span>
+                <strong>{{ saison.name }}</strong></span>
         </h1>
 
         <div class="admin-recipes-list">
@@ -34,6 +34,8 @@
                             </div>
                         </div>
                     </div>
+                {% else %}
+                    <p>Aucune recette en ligne pour cette saison.</p>
                 {% endfor %}
             </div>
         </div>

@@ -1,3 +1,5 @@
+
+// partie backend
 .card-edit {
     flex: 1 1 calc(20% - 20px);
     box-sizing: border-box;
@@ -21,6 +23,7 @@
     flex: 1 1 calc(20% - 20px);
     box-sizing: border-box;
     border: 1px solid #FFB534;
+    // border: 1px solid rgba(0, 225, 255, 0);
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -53,4 +56,22 @@
 
 .card .btn {
     width: 48%;
+}
+
+// partie frontend
+// index frontend
+.grid-recettes, .grid-saisons, .grid-themes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.recette-item, .saison-item, .theme-item {
+    text-align: center;
+    margin: 10px;
+}
+
+.recette-item img, .saison-item img, .theme-item img {
+    max-width: 100%;
+    border-radius: 10px;
 }

@@ -9,4 +9,100 @@
 	<section class="models">
 		{% include 'Frontend/Home/_banner.html.twig' %}
 	</section>
+
+
+	<header class="text-center p-4">
+		<h1>Bienvenue sur Savourez la santé</h1>
+		<p><strong>votre allié pour une alimentation saine et gourmande !</strong></p>
+		<p><em>Bienvenue sur notre site dédié aux recettes à faible indice glycémique, spécialement conçues pour vous aider à mieux gérer votre glycémie sans renoncer au plaisir de manger.</em> Nous vous proposons une sélection de plats savoureux, équilibrés et variés, qui allient santé et gourmandise. Que vous soyez diabétique, soucieux de votre équilibre alimentaire, ou simplement à la recherche d'une alimentation plus saine, nos recettes vous offrent des solutions adaptées à vos besoins.</p>
+
+	</header>
+
+<section class=" ">
+    <div class="separator-color-o text-center my-4 py-4">
+        <span>Recette du jour</span>
+    </div>
+		<p class="text-center">Recette aléatoire chaque jour</p>
+		<div
+			class="grid-recettes d-flex justify-content-center">{# {% for recette in recette_du_jour %}
+													<div class="recette-item mx-2">
+														<img src="{{ asset('images/recettes/' ~ recette.imageName) }}" alt="{{ recette.name }}" class="img-fluid rounded">
+														<p class="text-center mt-2">{{ recette.name }}</p>
+													</div>
+												{% endfor %} #}
+		</div>
+
+	</section>
+
+<section class="">
+    <div class="separator-color-v separator-title text-center my-4 py-4">
+        <span>Recette par saisons</span>
+    </div>
+		<div class="card-container mt-3">
+			<a href="/admin/recette">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title text-center">Été</h5>
+						<img src="{{ asset('images/saisons/ete.jpg') }}" alt="Été" class="card-img-top radius">
+					</div>
+				</div>
+			</a>
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title text-center">Printemps</h5>
+					<img src="{{ asset('images/saisons/printemps.jpg') }}" alt="Printemps" class="card-img-top radius">
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title text-center">Automne</h5>
+					<img src="{{ asset('images/saisons/automne.jpg') }}" alt="Automne" class="card-img-top radius">
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title text-center">Hiver</h5>
+					<img src="{{ asset('images/saisons/hiver.jpg') }}" alt="Hiver" class="card-img-top radius">
+				</div>
+			</div>
+		</div>
+	</section>
+
+<section class="">
+    <div class="separator-color-o separator-title text-center my-4 py-4">
+        <span>Thèmes préparation</span>
+    </div>
+		<div class="card-container mt-3">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title text-center">Pain</h5>
+					<img src="{{ asset('images/themes/pain.jpg') }}" alt="Pain" class="card-img-top radius">
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title text-center">Pâte à tarte</h5>
+					<img src="{{ asset('images/themes/pate-tarte.jpg') }}" alt="Pâte à tarte" class="card-img-top radius">
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title text-center">Lait végétal</h5>
+					<img src="{{ asset('images/themes/lait-vegetal.jpg') }}" alt="Lait végétal" class="card-img-top radius">
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title text-center">Boissons</h5>
+					<img src="{{ asset('images/themes/boissons.jpg') }}" alt="Boissons" class="card-img-top radius">
+				</div>
+			</div>
+		</div>
+	</section>
+
+<footer class="">
+    <div class="separator-color-v separator-title text-center my-4 py-4">
+        <span>Contact</span>
+    </footer>
+
 {% endblock %}

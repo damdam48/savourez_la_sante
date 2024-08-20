@@ -4,13 +4,22 @@ namespace App\Entity;
 
 use App\Entity\Product\Recette;
 use App\Repository\SaisonRepository;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use App\Entity\Traits\DateTimeTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SaisonRepository::class)]
+#[ORM\HasLifecycleCallbacks]
+#[Vich\Uploadable]
 class Saison
 {
+
+    use DateTimeTrait;
+
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -21,6 +30,13 @@ class Saison
 
     #[ORM\OneToMany(mappedBy: 'saison', targetEntity: Recette::class)]
     private Collection $recettes;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imageName = null;
+
+    #[Vich\UploadableField(mapping: 'recette_image', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
+
 
     public function __construct()
     {
@@ -43,6 +59,38 @@ class Saison
 
         return $this;
     }
+
+
+
+
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function setImageName(?string $imageName): static
+    {
+        $this->imageName = $imageName;
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if ($imageFile) {
+            $this->setUpdatedAt(new \DateTime()); // Utiliser le setter du trait
+        }
+    }
+
+
+
 
     /**
      * @return Collection<int, Recette>

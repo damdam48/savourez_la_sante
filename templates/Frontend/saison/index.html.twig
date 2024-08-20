@@ -1,81 +1,43 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Recettes pour la saison {{ saison.name }}
+    Recettes pour la saison
+    {{ saison.name }}
 {% endblock %}
 
 {% block body %}
-	<section class="models">
-		{% include 'Frontend/Home/_banner.html.twig' %}
-	</section>
-
-    <section>
-        <div class="text-center mt-5 mb-5">
-            <span>Voici les recettes {{ saison.name }}</span>
-        </div>
-
-        <div class="grid-recettes d-flex justify-content-center">
-            {% for recette in recettes %}
-                <div class="recette-item mx-2">
-                    <p class="text-center mt-2">{{ recette.name }}</p>
-                    <img src="{{ vich_uploader_asset(recette, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ recette.name }}">
-                </div>
-            {% else %}
-                <p class="text-center">Aucune recette pour la saison {{ saison.name }}.</p>
-            {% endfor %}
-        </div>
+    <section class="models">
+        {% include 'Frontend/Home/_banner.html.twig' %}
     </section>
 
+    <section>
+        <h1 class="text-center mt-5 mb-5">
+            <span>Ci vous trouverez toutes les recettes
+                <strong>{{ saison.name }}</strong></span>
+        </h1>
 
-
-<div class="admin-recipes-list">
-    <h2 class="ms-4 mt-4 mb-4 text-center">Liste des recettes :</h2>
-    <div class="card-container d-flex flex-column align-items-center">
-        {% for recette in recettes %}
-            <div class="card-column d-flex flex-column align-items-center">
-                <img src="{{ vich_uploader_asset(recette, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ recette.name }}">
-                <div class="card-body text-center">
-                    <h5 class="card-title">{{ recette.name }}</h5>
-                    <div class="card-text">
-                        <p>{{ recette.description }}</p>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-</div>
-
-
-
-
-	<section class="">
-    <div class="separator-color-v separator-title text-center my-4 py-4">
-        <span>Recette par saisons</span>
-    </div>
-
-    <div class="admin-recipes-list">
-        <div class="card-container">
-            {% for recette in recettes %}
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">{{ recette.name }}</h5>
+        <div class="admin-recipes-list">
+            <div class="card-container ms-5 me-5">
+                {% for recette in recettes %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ recette.name }}</h5>
                             <img src="{{ vich_uploader_asset(recette, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ recette.name }}">
-                        <div class="card-text mt-3">
-                
-                        <p>{{ recette.description }}</p>
-         
+                            <div class="card-text mt-3">
+                                {% set maxLength = 100 %} {# Définir la longueur maximale souhaitée #}
+                                {% set description = recette.description|slice(0, maxLength) %}
+                                {% if recette.description|length > maxLength %}
+                                    <p>{{ description }}...</p>
+                                {% else %}
+                                    <p>{{ recette.description }}</p>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% else %}
+                    <p>Aucune recette en ligne pour cette saison.</p>
+                {% endfor %}
+            </div>
         </div>
-    </div>
-</section>
-
-
-
-
-
-
+    </section>
 {% endblock %}
-

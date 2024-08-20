@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SaisonController extends AbstractController
 {
     #[Route('/saison/{name}', name: 'app.saison', methods: ['GET'])]
+    
     public function show(string $name, RecetteRepository $recetteRepository, SaisonRepository $saisonRepository): Response
     {
         $saison = $saisonRepository->findOneBy(['name' => $name]);
@@ -18,7 +19,10 @@ class SaisonController extends AbstractController
             throw $this->createNotFoundException('Saison non trouvée');
         }
 
-        $recettes = $recetteRepository->findBy(['saison' => $saison]);
+        $recettes = $recetteRepository->findBy([
+            'saison' => $saison,
+            'online' => true
+        ]);
 
         return $this->render('Frontend/saison/index.html.twig', [
             'saison' => $saison,
@@ -26,4 +30,5 @@ class SaisonController extends AbstractController
         ]);
     }
 }
+
 

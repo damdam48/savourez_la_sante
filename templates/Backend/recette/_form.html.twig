@@ -30,6 +30,14 @@
 		{{ form_widget(form.preparation, {'attr': {'class': 'form-control'}}) }}
 		{{ form_errors(form.preparation) }}
 	</div>
+
+
+		<div class="mb-3">
+		{{ form_label(form.saison) }}
+		{{ form_widget(form.saison, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.saison) }}
+	</div>
+
 	<button type="submit" class="btn btn-primary">{{ buttonLabel|default('Enregistrer') }}</button>
 	{{ form_end(form) }}
 {% endblock %}

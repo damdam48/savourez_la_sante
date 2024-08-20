@@ -2,6 +2,7 @@
 
 namespace App\Entity\Product;
 
+use App\Entity\Saison;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -41,6 +42,9 @@ class Recette
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $preparation = null;
+
+    #[ORM\ManyToOne(inversedBy: 'recettes')]
+    private ?Saison $saison = null;
 
     public function getId(): ?int
     {
@@ -124,6 +128,17 @@ class Recette
     public function setPreparation(string $preparation): static
     {
         $this->preparation = $preparation;
+        return $this;
+    }
+
+    public function getSaison(): ?Saison
+    {
+        return $this->saison;
+    }
+
+    public function setSaison(?Saison $saison): static
+    {
+        $this->saison = $saison;
         return $this;
     }
 }

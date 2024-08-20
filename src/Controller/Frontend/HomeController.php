@@ -21,9 +21,12 @@ class HomeController extends AbstractController
     }
 
     #[Route('', name: 'app.home', methods: ['GET'])]
-    public function index(): Response
+    public function index(ProductRecetteRepository $recetteRepository): Response
     {
-        $recettes = $this->recetteRepository->findAll();
+        $recettes = $recetteRepository->findBy([
+
+            'online' => true
+        ]);
         $saisons = $this->saisonRepository->findAll();
     
         // Mélange les recettes aléatoirement
@@ -40,4 +43,3 @@ class HomeController extends AbstractController
         ]);
     }
 }
-

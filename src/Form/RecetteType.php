@@ -2,6 +2,8 @@
 namespace App\Form;
 
 use App\Entity\Product\Recette;
+use App\Entity\Saison;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -52,6 +54,11 @@ class RecetteType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                 ],
+            ])
+
+            ->add('saison', EntityType::class, [
+                'class' => Saison::class,
+                'choice_label' => 'name',
             ]);
     }
 

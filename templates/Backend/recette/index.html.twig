@@ -23,7 +23,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title text-center">{{ recette.name }}</h5>
-                    <img src="{{ vich_uploader_asset(recette, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ recette.name }}">
+                        <img src="{{ vich_uploader_asset(recette, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ recette.name }}">
                         <div class="card-text mt-3">
                             <div class="d-flex justify-content-between">
                                 <small>DateCreate : {{ recette.createdAt ? recette.createdAt|date('d/m/Y') : 'N/A' }}</small>
@@ -31,7 +31,11 @@
                             </div>
                             <div class="d-flex justify-content-between mt-2">
                                 <small>Enable : {{ recette.online ? 'Oui' : 'Non' }}</small>
-                                <small>Alber Dupontel</small>
+                                {% if recette.saison %}
+                                    <small>{{ recette.saison.name }}</small>
+                                {% else %}
+                                    <small>Pas de saison associée</small>
+                                {% endif %}
                             </div>
                             <div class="d-flex justify-content-between mt-3">
                                 <a href="{{ path('admin.recette.edit', {id: recette.id}) }}" class="btn radius btn-sm btn-outline-primary w-100 me-1">
@@ -56,5 +60,6 @@
             {% endfor %}
         </div>
     </div>
+    
     </section>
 {% endblock %}

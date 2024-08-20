@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	admin | Savourez la santé
+{% endblock %}
+
+{% block body %}
+	<section class="models">
+		{% include 'Frontend/Home/_banner.html.twig' %}
+	</section>
+
+	<section>
+		<h1 class="admin-title">Bienvenue sur la page d'administration des <strong>saisons</strong></h1>
+
+        <a href="{{ path('admin.recette.index') }}" class="btn radius ms-5 btn-margin btn-outline">administration recette</a>
+
+		<a href="{{ path('admin.saison.create') }}" class="btn radius ms-3 btn-margin btn-outline-primary">Ajouter une saison</a>
+
+		<div class="admin-recipes-list">
+			<h2 class="ms-4 mt-4 mb-4">Liste des saisons :</h2>
+			<div class="card-container">
+				{% for saison in saisons %}
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title text-center">{{ saison.name }}</h5>
+
+							<img src="{{ vich_uploader_asset(saison, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ saison.name }}">
+							<div class="card-text mt-3">
+								<div class="d-flex justify-content-between">
+									<small>DateCreate :
+										{{ saison.createdAt ? saison.createdAt|date('d/m/Y') : 'N/A' }}</small>
+									<small>DateUpdate :
+										{{ saison.updatedAt ? saison.updatedAt|date('d/m/Y') : 'N/A' }}</small>
+								</div>
+
+								<div class="d-flex justify-content-between mt-2">
+									<small>ID :
+										{{ saison.id }}</small>
+								</div>
+
+								<div class="d-flex justify-content-between mt-3">
+									<a href="{{ path('admin.saison.edit', {id: saison.id}) }}" class="btn radius btn-sm btn-outline-primary w-100 me-1">
+										<i class="bi bi-pencil"></i>
+										<span class="hideMobile">Modifier</span>
+									</a>
+
+									<form action="{{ path('admin.saison.delete', {id: saison.id}) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette saison ?')" class="w-100 ms-1">
+										<input type="hidden" name="token" value="{{ csrf_token('delete' ~ saison.id) }}">
+										<button type="submit" class="btn radius btn-sm btn-outline-danger w-100">
+											<i class="bi bi-trash"></i>
+											<span class="hideMobile">Supprimer</span>
+										</button>
+									</form>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				{% else %}
+					<div class="col-12">
+						<p>Aucune saison trouvée.</p>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Création d'une saison
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <section class="models">
+        {% include 'Frontend/Home/_banner.html.twig' %}
+    </section>
+
+	<h1 class="admin-title">Création d'une saison</h1>
+
+	<section >
+
+		<a href="{{ '/admin/recette' }}" class="btn radius ms-5 btn-margin btn-outline-primary ms-5 mb-4">
+			Retour sur la page admin
+		</a>
+
+		<div class="container mt-2 card-edit">
+			<div class="margin-container-border">{% include 'Backend/saison/_form.html.twig' with { buttonLabel: 'Créer' } %}</div>
+		</div>
+	</section>
+{% endblock %}

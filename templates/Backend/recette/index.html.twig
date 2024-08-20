@@ -10,13 +10,15 @@
     </section>
     
     <section>
-    <h1 class="admin-title">Bienvenue sur la page d'administration des recettes</h1>
+    <h1 class="admin-title">Bienvenue sur la page d'administration des <strong>recettes</strong></h1>
 
-    <a href="{{ path('admin.recette.create') }}" class="btn radius ms-5 btn-margin btn-outline-primary">Ajouter une recette</a>
+    <a href="{{ path('admin.saison.index') }}" class="btn radius ms-5 btn-margin btn-outline">administration saison</a>
 
-    <div class="mt-4 admin-recipes-list">
-        <h2 class="ms-4">Liste des recettes</h2>
-        <div class="card-container mt-3">
+    <a href="{{ path('admin.recette.create') }}" class="btn radius ms-3 btn-margin btn-outline-primary">Ajouter une recette</a>
+
+    <div class="admin-recipes-list">
+        <h2 class="ms-4 mt-4 mb-4">Liste des recettes :</h2>
+        <div class="card-container">
             {% for recette in recettes %}
                 <div class="card">
                     <div class="card-body">

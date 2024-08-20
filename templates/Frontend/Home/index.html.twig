@@ -30,12 +30,12 @@
     <div class="separator-color-o separator-title text-center my-4 py-4">
         <span>Recette du jour</span>
     </div>
-    <p class="text-center">Recette aléatoire toutes les 12 heures</p>
+    <p class="text-center mb-5">Recette aléatoire</p>
     <div class="admin-recipes-list">
         <div class="card-container">
-            {# {% for recette in recettesAleatoires %}
+            {% for recette in recettesAleatoires %}
                 <a href="">
-                    <div class="card border-v card-hover">
+                    <div class="card border-o card-hover">
                         <div class="card-body">
                             <h5 class="card-title text-center">{{ recette.name }}</h5>
                             <img src="{{ vich_uploader_asset(recette, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ recette.name }}">
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </a>
-            {% endfor %} #}
+            {% endfor %}
         </div>
     </div>
 </section>

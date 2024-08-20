@@ -1,19 +1,77 @@
 /* Style pour la bordure pointillée sous la navbar */
 /* Ajoutez cette classe à votre fichier CSS */
-.separator {
 
-    position: relative;
-}
 
-.separator::after {
-    content: "";
-    display: block;
-    position: absolute;
+.separator{
     bottom: -5px;
     margin-left: 4%;
-
     width: 92%;
     border-bottom: 2px dashed #FFB534;
+}
+
+
+
+/* Styles color orange */
+.separator-color-o {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 20px;
+
+    bottom: -5px;
+    margin-left: 4%;
+    width: 92%;
+}
+
+.separator-color-o span {
+    padding: 0 15px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #FFB534;
 
 }
+
+.separator-color-o::before,
+.separator-color-o::after {
+    content: '';
+    flex-grow: 1;
+    border-bottom: 2px dashed #FFB534;
+    // margin: 0 10px;
+}
+
+
+
+/* Styles color vert */
+.separator-color-v {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 20px;
+
+    bottom: -5px;
+    margin-left: 4%;
+    width: 92%;
+
+}
+
+.separator-color-v span {
+    padding: 0 15px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #98D8AA;
+
+}
+
+.separator-color-v::before,
+.separator-color-v::after {
+    content: '';
+    flex-grow: 1;
+    border-bottom: 2px dashed #98D8AA;
+    // margin: 0 10px;
+}
+
+
+
 

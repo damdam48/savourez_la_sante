@@ -1,0 +1,77 @@
+
+// partie backend
+.card-edit {
+    flex: 1 1 calc(20% - 20px);
+    box-sizing: border-box;
+    border: 1px solid #FFB534;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 80%;
+    margin-bottom: 30px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.card {
+    flex: 1 1 calc(20% - 20px);
+    box-sizing: border-box;
+    border: 1px solid #FFB534;
+    // border: 1px solid rgba(0, 225, 255, 0);
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 300px;
+}
+
+/* Styles des images */
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Styles pour le contenu de la carte */
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+}
+
+.card-text small {
+    font-size: 0.875rem;
+    color: #555;
+}
+
+.card .btn {
+    width: 48%;
+}
+
+// partie frontend
+// index frontend
+.grid-recettes, .grid-saisons, .grid-themes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.recette-item, .saison-item, .theme-item {
+    text-align: center;
+    margin: 10px;
+}
+
+.recette-item img, .saison-item img, .theme-item img {
+    max-width: 100%;
+    border-radius: 10px;
+}

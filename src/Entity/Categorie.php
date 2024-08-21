@@ -3,14 +3,20 @@
 namespace App\Entity;
 
 use App\Entity\Product\Recette;
+use App\Entity\Traits\DateTimeTrait;
 use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Categorie
 {
+
+    use DateTimeTrait;
+
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

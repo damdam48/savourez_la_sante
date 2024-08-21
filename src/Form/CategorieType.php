@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class CategorieType extends AbstractType
 {
@@ -18,6 +19,13 @@ class CategorieType extends AbstractType
             'attr' => [
                 'class' => 'form-control',
             ],
+        ])
+        ->add('imageFile', VichImageType::class, [
+            'label' => 'Image',
+            'required' => false,
+            'allow_delete' => false,
+            'download_uri' => false,
+            'image_uri' => true,
         ]);
 
     }

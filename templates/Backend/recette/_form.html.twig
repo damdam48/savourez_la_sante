@@ -10,11 +10,11 @@
 		{{ form_widget(form.online, {'attr': {'class': 'form-check-input'}}) }}
 		{{ form_errors(form.online) }}
 	</div>
-    <div class="mb-3">
-        {{ form_label(form.imageFile) }}
-        {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}}) }}
-        {{ form_errors(form.imageFile) }}
-    </div>
+	<div class="mb-3">
+		{{ form_label(form.imageFile) }}
+		{{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.imageFile) }}
+	</div>
 	<div class="mb-3">
 		{{ form_label(form.description) }}
 		{{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
@@ -31,11 +31,16 @@
 		{{ form_errors(form.preparation) }}
 	</div>
 
-
-		<div class="mb-3">
+	<div class="mb-3">
 		{{ form_label(form.saison) }}
 		{{ form_widget(form.saison, {'attr': {'class': 'form-control'}}) }}
 		{{ form_errors(form.saison) }}
+	</div>
+
+	<div class="mb-3">
+		{{ form_label(form.categorie) }}
+		{{ form_widget(form.categorie, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.categorie) }}
 	</div>
 
 	<button type="submit" class="btn btn-primary">{{ buttonLabel|default('Enregistrer') }}</button>

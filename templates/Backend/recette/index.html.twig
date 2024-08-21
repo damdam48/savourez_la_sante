@@ -1,65 +1,84 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    admin | Savourez la santé
+	admin | Savourez la santé
 {% endblock %}
 
 {% block body %}
-    <section class="models">
-        {% include 'Frontend/Home/_banner.html.twig' %}
-    </section>
-    
-    <section>
-    <h1 class="admin-title">Bienvenue sur la page d'administration des <strong>recettes</strong></h1>
+	<section class="models">
+		{% include 'Frontend/Home/_banner.html.twig' %}
+	</section>
 
-    <a href="{{ path('admin.saison.index') }}" class="btn radius ms-5 btn-margin btn-outline">administration saison</a>
+	<section>
+		<h1 class="admin-title">Bienvenue sur la page d'administration des
+			<strong>recettes</strong>
+		</h1>
 
-    <a href="{{ path('admin.recette.create') }}" class="btn radius ms-3 btn-margin btn-outline-primary">Ajouter une recette</a>
+		<a href="{{ path('admin.saison.index') }}" class="btn radius ms-5  btn-outline">administration saison</a>
 
-    <div class="admin-recipes-list">
-        <h2 class="ms-4 mt-4 mb-4">Liste des recettes :</h2>
-        <div class="card-container">
-            {% for recette in recettes %}
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">{{ recette.name }}</h5>
-                        <img src="{{ vich_uploader_asset(recette, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ recette.name }}">
-                        <div class="card-text mt-3">
-                            <div class="d-flex justify-content-between">
-                                <small>DateCreate : {{ recette.createdAt ? recette.createdAt|date('d/m/Y') : 'N/A' }}</small>
-                                <small>DateUpdate : {{ recette.updatedAt ? recette.updatedAt|date('d/m/Y') : 'N/A' }}</small>
-                            </div>
-                            <div class="d-flex justify-content-between mt-2">
-                                <small>Enable : {{ recette.online ? 'Oui' : 'Non' }}</small>
-                                {% if recette.saison %}
-                                    <small>{{ recette.saison.name }}</small>
-                                {% else %}
-                                    <small>Pas de saison associée</small>
-                                {% endif %}
-                            </div>
-                            <div class="d-flex justify-content-between mt-3">
-                                <a href="{{ path('admin.recette.edit', {id: recette.id}) }}" class="btn radius btn-sm btn-outline-primary w-100 me-1">
-                                    <i class="bi bi-pencil"></i>
-                                    <span class="hideMobile">Modifier</span>
-                                </a>
-                                <form action="{{ path('admin.recette.delete', {id: recette.id}) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette recette ?')" class="w-100 ms-1">
-                                    <input type="hidden" name="token" value="{{ csrf_token('delete' ~ recette.id) }}">
-                                    <button type="submit" class="btn radius btn-sm btn-outline-danger w-100">
-                                        <i class="bi bi-trash"></i>
-                                        <span class="hideMobile">Supprimer</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% else %}
-                <div class="col-12">
-                    <p>Aucune recette trouvée.</p>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-    
-    </section>
+		<a href="{{ path('admin.categorie.index') }}" class="btn radius ms-2 btn-outline">administration categorie</a>
+
+		<a href="{{ path('admin.recette.create') }}" class="btn radius ms-5 btn-outline-primary">Ajouter une recette</a>
+
+		<div class="admin-recipes-list">
+			<h2 class="ms-4 mt-4 mb-4">Liste des recettes :</h2>
+			<div class="card-container">
+				{% for recette in recettes %}
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title text-center">{{ recette.name }}</h5>
+							<img src="{{ vich_uploader_asset(recette, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ recette.name }}">
+							<div class="card-text mt-3">
+								<div class="d-flex justify-content-between">
+									<small>DateCreate :
+										<div>{{ recette.createdAt ? recette.createdAt|date('d/m/Y') : 'N/A' }}</div></small>
+									<small>DateUpdate :
+										<div>{{ recette.updatedAt ? recette.updatedAt|date('d/m/Y') : 'N/A' }}</div></small>
+								</div>
+								<div class="d-flex justify-content-between mt-2">
+
+									{% if recette.saison %}
+										<small>{{ recette.saison.name }}</small>
+									{% else %}
+										<small>Pas de saison associée</small>
+									{% endif %}
+								
+
+									{% if recette.categorie %}
+										<small>{{ recette.categorie.name }}</small>
+									{% else %}
+										<small>Pas de categorie associée</small>
+									{% endif %}
+								</div>
+
+								<div class="d-flex justify-content-around mt-2">
+									<small>Enable :
+										{{ recette.online ? 'Oui' : 'Non' }}</small>
+								</div>
+
+								<div class="d-flex justify-content-between mt-3">
+									<a href="{{ path('admin.recette.edit', {id: recette.id}) }}" class="btn radius btn-sm btn-outline-primary w-100 me-1">
+										<i class="bi bi-pencil"></i>
+										<span class="hideMobile">Modifier</span>
+									</a>
+									<form action="{{ path('admin.recette.delete', {id: recette.id}) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette recette ?')" class="w-100 ms-1">
+										<input type="hidden" name="token" value="{{ csrf_token('delete' ~ recette.id) }}">
+										<button type="submit" class="btn radius btn-sm btn-outline-danger w-100">
+											<i class="bi bi-trash"></i>
+											<span class="hideMobile">Supprimer</span>
+										</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% else %}
+					<div class="col-12">
+						<p>Aucune recette trouvée.</p>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+
+	</section>
 {% endblock %}

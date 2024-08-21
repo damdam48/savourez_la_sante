@@ -1,6 +1,7 @@
 <?php
 namespace App\Form;
 
+use App\Entity\Categorie;
 use App\Entity\Product\Recette;
 use App\Entity\Saison;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -58,6 +59,11 @@ class RecetteType extends AbstractType
 
             ->add('saison', EntityType::class, [
                 'class' => Saison::class,
+                'choice_label' => 'name',
+            ])
+
+            ->add('categorie', EntityType::class, [
+                'class' => Categorie::class,
                 'choice_label' => 'name',
             ]);
     }

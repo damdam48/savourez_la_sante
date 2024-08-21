@@ -29,8 +29,11 @@ class RecetteController extends AbstractController
     public function index(): Response
     {
 
-        $recettes = $this->recetteRepository->findAll();
         $saisons = $this->saisonRepository->findAll();
+        $recettes = $this->recetteRepository->findBy(
+            [],                    // Aucun critère spécifique de filtrage
+            ['createdAt' => 'DESC']       // Tri par date de création, décroissant
+        );
 
         return $this->render('Backend/recette/index.html.twig', [
             'recettes' => $recettes,

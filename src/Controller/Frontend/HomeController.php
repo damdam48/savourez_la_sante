@@ -23,12 +23,12 @@ class HomeController extends AbstractController
     #[Route('', name: 'app.home', methods: ['GET'])]
     public function index(ProductRecetteRepository $recetteRepository): Response
     {
-        $recettes = $recetteRepository->findBy([
 
+        $saisons = $this->saisonRepository->findAll();
+        $recettes = $recetteRepository->findBy([
             'online' => true
         ]);
-        $saisons = $this->saisonRepository->findAll();
-    
+
         // Mélange les recettes aléatoirement
         shuffle($recettes);
     
@@ -36,7 +36,6 @@ class HomeController extends AbstractController
         $recettesAleatoires = array_slice($recettes, 0, 3);
     
         return $this->render('Frontend/Home/index.html.twig', [
-            'controller_name' => 'HomeController',
             'recettesAleatoires' => $recettesAleatoires,
             'recettes' => $recettes,
             'saisons' => $saisons,

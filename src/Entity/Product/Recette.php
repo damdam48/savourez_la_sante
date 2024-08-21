@@ -2,6 +2,7 @@
 
 namespace App\Entity\Product;
 
+use App\Entity\Categorie;
 use App\Entity\Saison;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -45,6 +46,9 @@ class Recette
 
     #[ORM\ManyToOne(inversedBy: 'recettes')]
     private ?Saison $saison = null;
+
+    #[ORM\ManyToOne(inversedBy: 'recettes')]
+    private ?Categorie $categorie = null;
 
     public function getId(): ?int
     {
@@ -139,6 +143,18 @@ class Recette
     public function setSaison(?Saison $saison): static
     {
         $this->saison = $saison;
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): static
+    {
+        $this->categorie = $categorie;
+
         return $this;
     }
 }

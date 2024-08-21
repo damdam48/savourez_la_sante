@@ -73,38 +73,33 @@
 	</section>
 
 
-{# recette part type #}
+
+{# recette par categorie #}
 	<section class="">
 		<div class="separator-color-o separator-title text-center my-4 py-4">
-			<span>Thèmes préparation</span>
+			<span>Recette par categorie</span>
 		</div>
-		<div class="card-container mt-3">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title text-center">Pain</h5>
-					<img src="{{ asset('images/themes/pain.jpg') }}" alt="Pain" class="card-img-top radius">
-				</div>
-			</div>
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title text-center">Pâte à tarte</h5>
-					<img src="{{ asset('images/themes/pate-tarte.jpg') }}" alt="Pâte à tarte" class="card-img-top radius">
-				</div>
-			</div>
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title text-center">Lait végétal</h5>
-					<img src="{{ asset('images/themes/lait-vegetal.jpg') }}" alt="Lait végétal" class="card-img-top radius">
-				</div>
-			</div>
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title text-center">Boissons</h5>
-					<img src="{{ asset('images/themes/boissons.jpg') }}" alt="Boissons" class="card-img-top radius">
-				</div>
+
+		<div class="admin-recipes-list">
+			<div class="card-container ">
+				{% for categorie in categories %}
+					<a href="{{ path('app.categorie', { name: categorie.name }) }}">
+						<div class="card border-o card-hover">
+							<div class="card-body">
+								<h5 class="card-title text-center">{{ categorie.name }}</h5>
+								<img src="{{ vich_uploader_asset(categorie, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ categorie.name }}">
+								<div class="card-text mt-3"></div>
+							</div>
+						</div>
+					</a>
+				{% endfor %}
 			</div>
 		</div>
 	</section>
+
+	<button id="scrollToTop" class="btn btn-warning" title="Retour en haut">
+    <i class="bi bi-arrow-up-circle-fill"></i>
+</button>
 
 	<footer class="">
 		<div class="separator-color-v separator-title text-center my-4 py-4">
@@ -112,3 +107,6 @@
 		</footer>
 
 	{% endblock %}
+
+
+

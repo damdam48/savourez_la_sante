@@ -20,4 +20,25 @@
 	</body>
 
 
+	<script>
+		// Afficher/Masquer le bouton en fonction du défilement
+		window.onscroll = function () {
+		scrollFunction();
+		};
+
+		function scrollFunction() {
+		const scrollToTopButton = document.getElementById("scrollToTop");
+		if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+		scrollToTopButton.style.display = "block";
+		} else {
+		scrollToTopButton.style.display = "none";
+		}
+		}
+
+		// Défilement en haut de la page lorsqu'on clique sur le bouton
+		document.getElementById('scrollToTop').addEventListener('click', function () {
+		window.scrollTo({top: 0, behavior: 'smooth'});
+		});
+	</script>
+
 </html>

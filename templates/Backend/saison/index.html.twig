@@ -12,9 +12,11 @@
 	<section>
 		<h1 class="admin-title">Bienvenue sur la page d'administration des <strong>saisons</strong></h1>
 
-        <a href="{{ path('admin.recette.index') }}" class="btn radius ms-5 btn-margin btn-outline">administration recette</a>
+        <a href="{{ path('admin.recette.index') }}" class="btn radius ms-5 btn-outline">administration recette</a>
 
-		<a href="{{ path('admin.saison.create') }}" class="btn radius ms-3 btn-margin btn-outline-primary">Ajouter une saison</a>
+        <a href="{{ path('admin.categorie.index') }}" class="btn radius ms-2 btn-outline">administration categorie</a>
+
+		<a href="{{ path('admin.saison.create') }}" class="btn radius ms-5 btn-margin btn-outline-primary">Ajouter une saison</a>
 
 		<div class="admin-recipes-list">
 			<h2 class="ms-4 mt-4 mb-4">Liste des saisons :</h2>
@@ -58,7 +60,7 @@
 					</div>
 				{% else %}
 					<div class="col-12">
-						<p>Aucune saison trouvée.</p>
+						<p class="text-center">Aucune saison trouvée.</p>
 					</div>
 				{% endfor %}
 			</div>

@@ -6,11 +6,14 @@ use App\Entity\Product\Recette;
 use App\Entity\Traits\DateTimeTrait;
 use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
 #[ORM\HasLifecycleCallbacks]
+#[Vich\Uploadable]
 class Categorie
 {
 
@@ -24,6 +27,12 @@ class Categorie
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $name = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imageName = null;
+
+    #[Vich\UploadableField(mapping: 'recette_image', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
 
     /**
      * @var Collection<int, Recette>
@@ -52,6 +61,36 @@ class Categorie
 
         return $this;
     }
+
+
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function setImageName(?string $imageName): static
+    {
+        $this->imageName = $imageName;
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if ($imageFile) {
+            $this->setUpdatedAt(new \DateTime()); // Utiliser le setter du trait
+        }
+    }
+
+
+
 
     /**
      * @return Collection<int, Recette>

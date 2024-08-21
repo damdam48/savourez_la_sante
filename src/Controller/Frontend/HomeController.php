@@ -46,4 +46,23 @@ class HomeController extends AbstractController
             'categories' => $categories,
         ]);
     }
+
+    #[Route('/{id}', name: 'app.RecetteComplete', methods: ['GET'])]
+    public function RecetteComplete(int $id, ProductRecetteRepository $recetteRepository): Response
+    {
+        $recette = $recetteRepository->find($id);
+    
+        if (!$recette) {
+            throw $this->createNotFoundException('Recette non trouvée');
+        }
+    
+        return $this->render('Frontend/Home/RecetteComplete.html.twig', [
+            'recette' => $recette,
+        ]);
+    }
+    
 }
+
+
+
+

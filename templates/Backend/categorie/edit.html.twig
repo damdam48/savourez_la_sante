@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Mise a jour d'une categorie
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="models">
+		{% include 'Frontend/Home/_banner.html.twig' %}
+	</section>
+
+	<h1 class="admin-title">Mise a jour d'une categorie</h1>
+
+	<section>
+
+		<a href="{{ '/admin/categorie' }}" class="btn radius btn-margin btn-outline-primary ms-5 mb-4">
+			Retour sur la page admin
+		</a>
+
+
+		<div class="container mt-2 card-edit">
+			<div class="margin-container-border">{% include 'Backend/categorie/_form.html.twig' with { buttonLabel: 'Modifier' } %}</div>
+		</div>
+
+	</section>
+{% endblock %}

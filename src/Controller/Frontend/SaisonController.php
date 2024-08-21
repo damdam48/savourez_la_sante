@@ -22,7 +22,9 @@ class SaisonController extends AbstractController
         $recettes = $recetteRepository->findBy([
             'saison' => $saison,
             'online' => true
-        ]);
+        ],
+            ['createdAt' => 'DESC']       // Tri par date de création, décroissant
+        );
 
         return $this->render('Frontend/saison/index.html.twig', [
             'saison' => $saison,

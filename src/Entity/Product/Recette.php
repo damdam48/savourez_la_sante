@@ -113,6 +113,7 @@ class Recette
         return $this;
     }
 
+
     public function getListeIngredient(): ?string
     {
         return $this->listeIngredient;

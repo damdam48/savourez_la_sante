@@ -34,7 +34,7 @@
     <div class="admin-recipes-list">
         <div class="card-container">
             {% for recette in recettesAleatoires %}
-                <a href="#">
+                <a href="{{ path('app.RecetteComplete', { id: recette.id }) }}">
                     <div class="card border-o card-hover">
                         <div class="card-body">
                             <h5 class="card-title text-center">{{ recette.name }}</h5>

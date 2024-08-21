@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Recette complète | Savourez la santé
+{% endblock %}
+
+{% block body %}
+<section class="models">
+    {% include 'Frontend/Home/_banner.html.twig' %}
+</section>
+ <section class="">   
+    <!-- Recipe Title -->
+    <h1 class="text-center mt-4">{{ recette.name }}</h1>
+
+    <!-- Recipe Image -->
+    <div class="text-center mt-4">
+        <img src="{{ vich_uploader_asset(recette, 'imageFile') ?: asset('placeholder.png') }}" class="recipe-img radius" alt="{{ recette.name }}">
+    </div>
+
+    <!-- Recipe Info -->
+    {# <div class="text-center mt-4">
+        <span class="badge bg-light text-dark">Saison idéale : {{ recette.saison.name }}</span>
+        <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-outline-secondary me-2">Imprimer</button>
+            <button class="btn btn-outline-secondary">Commentaire</button>
+        </div>
+    </div> #}
+
+    <!-- Recipe Description -->
+    <p class="text-center mt-4">{{ recette.description }}</p>
+
+    <!-- Ingredients Section -->
+    <div class="ingredients mt-5">
+        <h3 class="text-center">Ingrédients</h3>
+        <div class="text-center">
+            <p>{{ recette.listeIngredient }}</p>
+        </div>
+    </div>
+
+    <!-- Preparation Section -->
+    <div class="preparation mt-5">
+        <h3 class="text-center">Préparation</h3>
+        <div class="text-center">
+            <p>{{ recette.preparation }}</p>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

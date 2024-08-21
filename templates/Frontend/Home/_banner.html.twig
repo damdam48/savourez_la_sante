@@ -17,13 +17,13 @@
 							<a class="nav-link active" aria-current="page" href="{{ '/' }}">Accueil</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Saison</a>
+							<a class="nav-link" href="#recette-saison">Saison</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Thème</a>
+							<a class="nav-link" href="#recette-categorie">Categorie</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Contact</a>
+							<a class="nav-link" href="#contact">Contact</a>
 						</li>
 					</ul>
 					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -43,4 +43,7 @@
 		</nav>
 		<div class="separator-color-o"></div>
 	</section>
+
+
+
 {% endblock %}

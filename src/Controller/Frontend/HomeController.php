@@ -2,6 +2,7 @@
 
 namespace App\Controller\Frontend;
 
+use App\Repository\CategorieRepository;
 use App\Repository\Product\RecetteRepository as ProductRecetteRepository;
 use App\Repository\SaisonRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,11 +14,13 @@ class HomeController extends AbstractController
 {
     private $recetteRepository;
     private $saisonRepository;
+    private $categoriesRepository;
 
-    public function __construct(ProductRecetteRepository $recetteRepository, SaisonRepository $saisonRepository)
+    public function __construct(ProductRecetteRepository $recetteRepository, SaisonRepository $saisonRepository, CategorieRepository $categoriesRepository)
     {
         $this->recetteRepository = $recetteRepository;
         $this->saisonRepository = $saisonRepository;
+        $this->categoriesRepository = $categoriesRepository;
     }
 
     #[Route('', name: 'app.home', methods: ['GET'])]
@@ -25,6 +28,7 @@ class HomeController extends AbstractController
     {
 
         $saisons = $this->saisonRepository->findAll();
+        $categories = $this->categoriesRepository->findAll();
         $recettes = $recetteRepository->findBy([
             'online' => true
         ]);
@@ -39,6 +43,7 @@ class HomeController extends AbstractController
             'recettesAleatoires' => $recettesAleatoires,
             'recettes' => $recettes,
             'saisons' => $saisons,
+            'categories' => $categories,
         ]);
     }
 }

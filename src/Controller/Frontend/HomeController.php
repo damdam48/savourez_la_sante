@@ -27,8 +27,12 @@ class HomeController extends AbstractController
     public function index(ProductRecetteRepository $recetteRepository): Response
     {
 
-        $saisons = $this->saisonRepository->findAll();
-        $categories = $this->categoriesRepository->findAll();
+        $saisons = $this->saisonRepository->findBy([
+            'online' => true
+        ]);
+        $categories = $this->categoriesRepository->findBy([
+            'online' => true
+        ]);
         $recettes = $recetteRepository->findBy([
             'online' => true
         ]);

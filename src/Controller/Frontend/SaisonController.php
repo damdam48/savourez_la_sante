@@ -14,7 +14,10 @@ class SaisonController extends AbstractController
     
     public function show(string $name, RecetteRepository $recetteRepository, SaisonRepository $saisonRepository): Response
     {
-        $saison = $saisonRepository->findOneBy(['name' => $name]);
+        $saison = $saisonRepository->findOneBy([
+            'name' => $name
+        ]);
+
         if (!$saison) {
             throw $this->createNotFoundException('Saison non trouvée');
         }

@@ -14,7 +14,10 @@ class CategorieController extends AbstractController
     
     public function show(string $name, RecetteRepository $recetteRepository, CategorieRepository $categorieRepository): Response
     {
-        $categorie = $categorieRepository->findOneBy(['name' => $name]);
+        $categorie = $categorieRepository->findOneBy([
+            'name' => $name
+        ]);
+        
         if (!$categorie) {
             throw $this->createNotFoundException('Categorie non trouvée');
         }

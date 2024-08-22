@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Saison;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -26,6 +27,14 @@ class SaisonType extends AbstractType
                 'allow_delete' => false,
                 'download_uri' => false,
                 'image_uri' => true,
+            ])
+
+            ->add('online', CheckboxType::class, [
+                'label' => 'Visible en ligne',
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-check-input',
+                ],
             ]);
     }
 

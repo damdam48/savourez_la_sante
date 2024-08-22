@@ -21,8 +21,8 @@ class CategorieController extends AbstractController
         private readonly CategorieRepository $categorieRepository
     ) {
     }
-// index
 
+// index
     #[Route('', name: '.index', methods: ['GET'])]
     public function index(): Response
     {

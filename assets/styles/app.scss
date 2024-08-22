@@ -15,19 +15,23 @@
 @import "img";
 @import "form";
 @import "scrollToTop";
+@import "recetteComplete";
 
 
 
 body {
-    background-color: #F5F4F1;
-    
+    background-color: #F5F4F1;   
 }
+
+// body, html {
+//     scroll-behavior: smooth;
+// }
 
 header {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 20px; /* Ajoute un peu d'espace autour du texte */
+    padding: 20px;
     margin-top: 50px;
 }
 
@@ -54,5 +58,11 @@ footer {
     padding: 20px;
     margin-top: 20px;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 
 

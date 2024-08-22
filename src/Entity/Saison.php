@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use App\Entity\Traits\DateTimeTrait;
+use App\Entity\Traits\OnlineTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
@@ -18,7 +19,7 @@ class Saison
 {
 
     use DateTimeTrait;
-
+    use OnlineTrait;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]

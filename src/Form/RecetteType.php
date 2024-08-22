@@ -42,29 +42,34 @@ class RecetteType extends AbstractType
                 'label' => 'Description',
                 'attr' => [
                     'class' => 'form-control',
+                    'rows' => 5,
                 ],
             ])
             ->add('listeIngredient', TextareaType::class, [
                 'label' => 'Liste des Ingrédients',
                 'attr' => [
                     'class' => 'form-control',
+                    'rows' => 10,
                 ],
             ])
             ->add('preparation', TextareaType::class, [
                 'label' => 'Préparation',
                 'attr' => [
                     'class' => 'form-control',
+                    'rows' => 10,
                 ],
             ])
 
             ->add('saison', EntityType::class, [
                 'class' => Saison::class,
                 'choice_label' => 'name',
+                'placeholder' => 'selectionner une Saison',
             ])
 
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
                 'choice_label' => 'name',
+                'placeholder' => 'selectionner une Categorie',
             ]);
     }
 

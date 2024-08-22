@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use App\Entity\Traits\DateTimeTrait;
+use App\Entity\Traits\OnlineTrait;
 use App\Repository\Product\RecetteRepository;
 
 #[ORM\Entity(repositoryClass: RecetteRepository::class)]
@@ -17,7 +18,8 @@ use App\Repository\Product\RecetteRepository;
 class Recette
 {
     use DateTimeTrait;
-
+    use OnlineTrait;
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -25,9 +27,6 @@ class Recette
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
-
-    #[ORM\Column]
-    private ?bool $online = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageName = null;
@@ -66,16 +65,7 @@ class Recette
         return $this;
     }
 
-    public function isOnline(): ?bool
-    {
-        return $this->online;
-    }
 
-    public function setOnline(bool $online): static
-    {
-        $this->online = $online;
-        return $this;
-    }
 
     public function getImageName(): ?string
     {

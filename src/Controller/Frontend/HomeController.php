@@ -47,8 +47,8 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app.RecetteComplete', methods: ['GET'])]
-    public function RecetteComplete(int $id, ProductRecetteRepository $recetteRepository): Response
+    #[Route('/recette/{id}', name: 'app.RecetteComplete', methods: ['GET'])]
+    public function RecetteComplete(string $id, ProductRecetteRepository $recetteRepository): Response
     {
         $recette = $recetteRepository->find($id);
     
@@ -60,6 +60,7 @@ class HomeController extends AbstractController
             'recette' => $recette,
         ]);
     }
+    
     
 }
 

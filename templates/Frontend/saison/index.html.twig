@@ -1,43 +1,47 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Recettes pour la saison
-    {{ saison.name }}
+	Recettes pour la saison
+	{{ saison.name }}
 {% endblock %}
 
 {% block body %}
-    <section class="models">
-        {% include 'Frontend/Home/_banner.html.twig' %}
-    </section>
+	<section class="models">
+		{% include 'Frontend/Home/_banner.html.twig' %}
+	</section>
 
-    <section>
-        <h1 class="text-center mt-5 mb-5">
-            <span>Ci vous trouverez toutes les recettes
-                <strong>{{ saison.name }}</strong></span>
-        </h1>
+	<section>
+		<h1 class="text-center mt-5 mb-5">
+			<span>Ci vous trouverez toutes les recettes
+				<strong>{{ saison.name }}</strong>
+			</span>
+		</h1>
 
-        <div class="admin-recipes-list">
-            <div class="card-container ms-5 me-5">
-                {% for recette in recettes %}
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">{{ recette.name }}</h5>
-                            <img src="{{ vich_uploader_asset(recette, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ recette.name }}">
-                            <div class="card-text mt-3">
-                                {% set maxLength = 100 %} {# Définir la longueur maximale souhaitée #}
-                                {% set description = recette.description|slice(0, maxLength) %}
-                                {% if recette.description|length > maxLength %}
-                                    <p>{{ description }}...</p>
-                                {% else %}
-                                    <p>{{ recette.description }}</p>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                {% else %}
-                    <p>Aucune recette en ligne pour cette saison.</p>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
+		<div class="admin-recipes-list">
+			<div class="card-container ms-5 me-5">
+				{% for recette in recettes %}
+					<div class="card">
+						<a href="{{ path('app.RecetteComplete', { id: recette.id }) }}">
+							<div class="card-body">
+								<h5 class="card-title text-center">{{ recette.name }}</h5>
+								<img src="{{ vich_uploader_asset(recette, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ recette.name }}">
+								<div class="card-text mt-3">
+									{% set maxLength = 100 %}
+									{# Définir la longueur maximale souhaitée #}
+									{% set description = recette.description|slice(0, maxLength) %}
+									{% if recette.description|length > maxLength %}
+										<p>{{ description }}...</p>
+									{% else %}
+										<p>{{ recette.description }}</p>
+									{% endif %}
+								</div>
+							</div>
+						</a>
+					</div>
+				{% else %}
+					<p>Aucune recette en ligne pour cette saison.</p>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
 {% endblock %}

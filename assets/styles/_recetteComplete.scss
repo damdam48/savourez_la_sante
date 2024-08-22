@@ -1,47 +1,20 @@
-// Styles pour la page RecetteComplete
+.recette-image img {
+  width: 800px;
+  object-fit: cover;
+  aspect-ratio: 16/9;
+  // max-height: 500px;
+  // height: auto;
+}
 
-.recette-complete {
-    // Réduire la taille de l'image
-    .recette-image {
-      max-width: 100%;
-      height: auto;
-      margin: 0 auto;
-      display: block;
-      border-radius: 8px;
-    }
-  
-    // Styles pour les sections "Préparation", "Ingrédients", "Description"
-    .recette-section {
-      background-color: #fff; // Couleur de fond blanche
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-      margin-top: 20px;
-      
-      h3 {
-        text-align: center;
-        color: #333; // Couleur du texte pour les titres
-        margin-bottom: 15px;
-      }
-  
-      p {
-        color: #666; // Couleur du texte pour le contenu
-        line-height: 1.6;
-        font-size: 16px;
-      }
-    }
-  
-    // Styles spécifiques à chaque section
-    .description {
-      // Style personnalisé pour la description si nécessaire
-    }
-  
-    .ingredients {
-      // Style personnalisé pour les ingrédients si nécessaire
-    }
-  
-    .preparation {
-      // Style personnalisé pour la préparation si nécessaire
-    }
-  }
-  
+.recette-section {
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #eee;
+}
+
+
+.recette-section p {
+  margin-bottom: 0;
+}

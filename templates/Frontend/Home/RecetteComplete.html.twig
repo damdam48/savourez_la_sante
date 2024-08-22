@@ -1,49 +1,64 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Recette complète | Savourez la santé
+	Recette complète | Savourez la santé
 {% endblock %}
 
 {% block body %}
-<section class="models">
-    {% include 'Frontend/Home/_banner.html.twig' %}
-</section>
- <section class="">   
-    <!-- Recipe Title -->
-    <h1 class="text-center mt-4">{{ recette.name }}</h1>
+	<section class="models">
+		{% include 'Frontend/Home/_banner.html.twig' %}
+	</section>
 
-    <!-- Recipe Image -->
-    <div class="text-center mt-4">
-        <img src="{{ vich_uploader_asset(recette, 'imageFile') ?: asset('placeholder.png') }}" class="recipe-img radius" alt="{{ recette.name }}">
-    </div>
 
-    <!-- Recipe Info -->
-    {# <div class="text-center mt-4">
-        <span class="badge bg-light text-dark">Saison idéale : {{ recette.saison.name }}</span>
-        <div class="d-flex justify-content-center mt-3">
-            <button class="btn btn-outline-secondary me-2">Imprimer</button>
-            <button class="btn btn-outline-secondary">Commentaire</button>
-        </div>
-    </div> #}
+	<section
+		class="">
+		<!-- Title -->
+		<h1 class="text-center mt-4">{{ recette.name }}</h1>
 
-    <!-- Recipe Description -->
-    <p class="text-center mt-4">{{ recette.description }}</p>
+		<!-- Image -->
+		<div class="text-center recette-image radius mt-4">
+			<img src="{{ vich_uploader_asset(recette, 'imageFile') ?: asset('placeholder.png') }}" class="radius" alt="{{ recette.name }}">
+		</div>
 
-    <!-- Ingredients Section -->
-    <div class="ingredients mt-5">
-        <h3 class="text-center">Ingrédients</h3>
-        <div class="text-center">
-            <p>{{ recette.listeIngredient }}</p>
-        </div>
-    </div>
+		<!-- Recipe Info -->
+		{# 
+		    <div class="text-center mt-4">
+		        <span class="badge bg-light text-dark">Saison idéale : {{ recette.saison.name }}</span>
+		        <div class="d-flex justify-content-center mt-3">
+		            <button class="btn btn-outline-secondary me-2">Imprimer</button>
+		            <button class="btn btn-outline-secondary">Commentaire</button>
+		        </div>
+		    </div> 
+		    #}
 
-    <!-- Preparation Section -->
-    <div class="preparation mt-5">
-        <h3 class="text-center">Préparation</h3>
-        <div class="text-center">
-            <p>{{ recette.preparation }}</p>
-        </div>
-    </div>
+		<!-- Description -->
+			<div class="recette-section container mt-5"> <p>{{ recette.description }}</p>
+		</div>
 
-</section>
+
+		<!-- Ingredients -->
+		<div class="separator-color-v separator-title text-center mt-5">
+			<span>Ingrédients</span>
+		</div>
+
+		<div class="recette-section container">
+			<p>
+				{{ recette.listeIngredient|nl2br }}
+			</p>
+		</div>
+
+
+		<!-- Preparation -->
+		<div class="separator-color-o separator-title text-center mt-5">
+			<span>Préparation</span>
+		</div>
+
+		<div class="recette-section container">
+			<p>
+				{{ recette.preparation|nl2br }}
+			</p>
+		</div>
+
+
+	</section>
 {% endblock %}

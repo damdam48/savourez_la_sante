@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Product\Recette;
 use App\Entity\Traits\DateTimeTrait;
+use App\Entity\Traits\OnlineTrait;
 use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
@@ -18,6 +19,7 @@ class Categorie
 {
 
     use DateTimeTrait;
+    use OnlineTrait;
 
 
     #[ORM\Id]

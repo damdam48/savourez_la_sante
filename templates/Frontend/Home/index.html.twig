@@ -4,28 +4,26 @@
 	Savourez la santé
 {% endblock %}
 
-
 {% block body %}
 	<section class="models">
 		{% include 'Frontend/Home/_banner.html.twig' %}
 	</section>
 
-
 	<header class="text-center p-4">
 		<div class="header-content">
 			<h1>
 				<p>
-					<strong class="text-black">Savourez la santé :  votre allié pour une alimentation saine et gourmande !</strong>
+					<strong class="text-black">Savourez la santé : votre allié pour une alimentation saine et gourmande !</strong>
 				</p>
 			</h1>
 			<p>
 				<em>Bienvenue sur notre site dédié aux recettes à faible indice glycémique, spécialement conçues pour vous aider à mieux gérer votre glycémie sans renoncer au plaisir de manger.</em>
-				Nous vous proposons une sélection de plats savoureux, équilibrés et variés, qui allient santé et gourmandise. Que vous soyez diabétique, soucieux de votre équilibre alimentaire, ou simplement à la recherche d'une alimentation plus saine, nos recettes vous offrent des solutions adaptées à vos besoins.</p>
+				Nous vous proposons une sélection de plats savoureux, équilibrés et variés, qui allient santé et gourmandise. Que vous soyez diabétique, soucieux de votre équilibre alimentaire, ou simplement à la recherche d'une alimentation plus saine, nos recettes vous offrent des solutions adaptées à vos besoins.
+			</p>
 		</div>
-
 	</header>
 
-	{# recette aleatoir #}
+	{# Recette aléatoire - visible pour tout le monde #}
 	<section class="">
 		<div class="separator-color-o separator-title text-center my-4 py-4">
 			<span>Recette du jour</span>
@@ -48,60 +46,86 @@
 		</div>
 	</section>
 
-
-	{# recette par saison #}
-	<section id="recette-saison" class="">
-		<div class="separator-color-v separator-title text-center my-4 py-4">
-			<span>Recette par saisons</span>
-		</div>
-
-		<div class="admin-recipes-list">
-			<div class="card-container ">
-				{% for saison in saisons %}
-					<a href="{{ path('app.saison', { name: saison.name }) }}">
-						<div class="card border-v card-hover">
-							<div class="card-body">
-								<h5 class="card-title-s text-center">{{ saison.name }}</h5>
-								<img src="{{ vich_uploader_asset(saison, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ saison.name }}">
-								<div class="card-text mt-3"></div>
-							</div>
-						</div>
-					</a>
-				{% endfor %}
+	{# Les sections suivantes ne sont visibles que pour les utilisateurs connectés #}
+	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+		{# Recettes par saison #}
+		<section id="recette-saison" class="">
+			<div class="separator-color-v separator-title text-center my-4 py-4">
+				<span>Recette par saisons</span>
 			</div>
-		</div>
-	</section>
 
-
-	{# recette par categorie #}
-	<section id="recette-categorie" class="">
-		<div class="separator-color-o separator-title text-center my-4 py-4">
-			<span>Recette par categorie</span>
-		</div>
-
-		<div class="admin-recipes-list">
-			<div class="card-container ">
-				{% for categorie in categories %}
-					<a href="{{ path('app.categorie', { name: categorie.name }) }}">
-						<div class="card border-o card-hover">
-							<div class="card-body">
-								<h5 class="card-title-s text-center">{{ categorie.name }}</h5>
-								<img src="{{ vich_uploader_asset(categorie, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ categorie.name }}">
-								<div class="card-text mt-3"></div>
+			<div class="admin-recipes-list">
+				<div class="card-container ">
+					{% for saison in saisons %}
+						<a href="{{ path('app.saison', { name: saison.name }) }}">
+							<div class="card border-v card-hover">
+								<div class="card-body">
+									<h5 class="card-title-s text-center">{{ saison.name }}</h5>
+									<img src="{{ vich_uploader_asset(saison, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ saison.name }}">
+									<div class="card-text mt-3"></div>
+								</div>
 							</div>
-						</div>
-					</a>
-				{% endfor %}
+						</a>
+					{% endfor %}
+				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 
+		{# Recettes par catégorie #}
+		<section id="recette-categorie" class="">
+			<div class="separator-color-o separator-title text-center my-4 py-4">
+				<span>Recette par categorie</span>
+			</div>
 
+			<div class="admin-recipes-list">
+				<div class="card-container ">
+					{% for categorie in categories %}
+						<a href="{{ path('app.categorie', { name: categorie.name }) }}">
+							<div class="card border-o card-hover">
+								<div class="card-body">
+									<h5 class="card-title-s text-center">{{ categorie.name }}</h5>
+									<img src="{{ vich_uploader_asset(categorie, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ categorie.name }}">
+									<div class="card-text mt-3"></div>
+								</div>
+							</div>
+						</a>
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+	{% else %}
+		<p class="text-center mt-4">
+			<a href="{{ path('app.login') }}">
+				<span class="orange">Connectez-vous</span>
+			</a>
+			pour voir plus de recettes.
+		</p>
+	{% endif %}
 
-	<footer id="contact" class="">
+	<div id="contact-test" class="">
 		<div class="separator-color-v separator-title text-center">
 			<span>Contact</span>
-		</footer>
+		</div>
 
+		<footer class="footer radius mt-5 mb-5">
+			<div class="footer-container ">
+				<div class="footer-section">
+					<h4>À Propos</h4>
+					<p>Nous sommes dédiés à partager des recettes saines et délicieuses avec le monde. Rejoignez-nous dans notre voyage pour découvrir le meilleur de la cuisine saine.</p>
+				</div>
+
+				<div class="footer-section">
+					<h4>Suivez-nous</h4>
+					<div class="social-icons">
+						<a href="#">Facebook</a>
+						<a href="#">Twitter</a>
+						<a href="#">Instagram</a>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>&copy; 2024 Savourez la Santé. Tous droits réservés.</p>
+			</div>
+		</footer>
 
 	{% endblock %}

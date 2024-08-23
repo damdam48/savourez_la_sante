@@ -5,7 +5,6 @@
 @import "btnOutline";
 @import "radius";
 @import "banner";
-
 @import "login";
 @import "register";
 @import "separator";
@@ -16,6 +15,7 @@
 @import "form";
 @import "scrollToTop";
 @import "recetteComplete";
+@import "footer";
 
 
 
@@ -23,9 +23,9 @@ body {
     background-color: #F5F4F1;   
 }
 
-// body, html {
-//     scroll-behavior: smooth;
-// }
+body, html {
+    scroll-behavior: smooth;
+}
 
 header {
     width: 100%;
@@ -53,12 +53,6 @@ p {
     margin-top: 0;
 }
 
-
-footer {
-    padding: 20px;
-    margin-top: 20px;
-}
-
 a {
     text-decoration: none;
     color: inherit;
@@ -67,6 +61,7 @@ a {
 .orange {
     color: #FFB534;
 }
+
 
 
 

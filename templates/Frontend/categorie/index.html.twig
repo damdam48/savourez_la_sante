@@ -20,7 +20,7 @@
 		<div class="admin-recipes-list">
 			<div class="card-container ms-5 me-5">
 				{% for recette in recettes %}
-					<div class="card">
+					<div class="card card-hover">
 						<a href="{{ path('app.RecetteComplete', { id: recette.id }) }}">
 							<div class="card-body">
 								<h5 class="card-title text-center">{{ recette.name }}</h5>

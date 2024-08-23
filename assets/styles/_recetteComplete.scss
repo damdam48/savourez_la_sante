@@ -1,0 +1,20 @@
+.recette-image img {
+  width: 800px;
+  object-fit: cover;
+  aspect-ratio: 16/9;
+  // max-height: 500px;
+  // height: auto;
+}
+
+.recette-section {
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #eee;
+}
+
+
+.recette-section p {
+  margin-bottom: 0;
+}

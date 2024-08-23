@@ -27,8 +27,12 @@ class HomeController extends AbstractController
     public function index(ProductRecetteRepository $recetteRepository): Response
     {
 
-        $saisons = $this->saisonRepository->findAll();
-        $categories = $this->categoriesRepository->findAll();
+        $saisons = $this->saisonRepository->findBy([
+            'online' => true
+        ]);
+        $categories = $this->categoriesRepository->findBy([
+            'online' => true
+        ]);
         $recettes = $recetteRepository->findBy([
             'online' => true
         ]);
@@ -46,4 +50,24 @@ class HomeController extends AbstractController
             'categories' => $categories,
         ]);
     }
+
+    #[Route('/recette/{id}', name: 'app.RecetteComplete', methods: ['GET'])]
+    public function RecetteComplete(string $id, ProductRecetteRepository $recetteRepository): Response
+    {
+        $recette = $recetteRepository->find($id);
+    
+        if (!$recette) {
+            throw $this->createNotFoundException('Recette non trouvée');
+        }
+    
+        return $this->render('Frontend/Home/RecetteComplete.html.twig', [
+            'recette' => $recette,
+        ]);
+    }
+    
+    
 }
+
+
+
+

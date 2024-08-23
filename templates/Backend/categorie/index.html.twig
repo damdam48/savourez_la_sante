@@ -10,11 +10,13 @@
 	</section>
 
 	<section>
-		<h1 class="admin-title">Bienvenue sur la page d'administration des <strong>categories</strong></h1>
+		<h1 class="admin-title">Bienvenue sur la page d'administration des
+			<strong>categories</strong>
+		</h1>
 
-        <a href="{{ path('admin.recette.index') }}" class="btn radius ms-5 btn-outline">administration recette</a>
+		<a href="{{ path('admin.recette.index') }}" class="btn radius ms-5 btn-outline">administration recette</a>
 
-        <a href="{{ path('admin.saison.index') }}" class="btn radius ms-2 btn-outline">administration saison</a>
+		<a href="{{ path('admin.saison.index') }}" class="btn radius ms-2 btn-outline">administration saison</a>
 
 		<a href="{{ path('admin.categorie.create') }}" class="btn radius ms-5 btn-margin  btn-outline-primary">Ajouter une categorie</a>
 
@@ -38,6 +40,11 @@
 								<div class="d-flex justify-content-between mt-2">
 									<small>ID :
 										{{ categorie.id }}</small>
+								</div>
+
+								<div class="d-flex justify-content-around mt-2">
+									<small>Enable :
+										{{ categorie.online ? 'Oui' : 'Non' }}</small>
 								</div>
 
 								<div class="d-flex justify-content-between mt-3">

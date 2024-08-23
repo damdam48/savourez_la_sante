@@ -1,45 +1,81 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	S’inscrire |
+	S'inscrire |
 	{{ parent() }}
 {% endblock %}
 
 {% block body %}
-	<section class="register-container py-5">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-8">
-					<div class="card shadow-sm">
-						<div class="card-body">
-							<h1 class="text-center mb-4">S’inscrire</h1>
-							<p class="text-center mb-4">
-								Créez-vous un compte pour avoir accès à Savourer la santé
-							</p>
-							{{ form_start(form) }}
-							<div class="row">
-								<div class="col-md-6 mb-3">{{ form_row(form.firstName) }}</div>
-								<div class="col-md-6 mb-3">{{ form_row(form.lastName) }}</div>
-							</div>
 
 
-							{{ form_widget(form, { 'attr': {'class': 'form-control mb-3'} }) }}
+	<h1 class="text-center mt-5">Rejoignez Savourer la santé et accédez à nos recettes exclusives !</h1>
+	{# <p class="text-center mb-4">
+		Rejoignez Savourer la santé et accédez à nos recettes exclusives !
+	</p> #}
+	<div class="container mt-5 p-5 card-edit">
 
-							
-							<button type="submit" class="btn btn-dark w-100">S'inscrire</button>
-
-
-							{{ form_end(form) }}
-
-
-							<p class="text-center mt-4">
-								Vous avez déjà un compte ?
-								<a href="{{ path('app.login') }}">Connectez-vous</a>
-							</p>
-						</div>
-					</div>
-				</div>
+		{{ form_start(form) }}
+		<div class="row">
+			<div class="col-md-6 mb-3">
+				{{ form_row(form.firstName, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'placeholder': 'Prénom'
+                                },
+                                'label_attr': {'class': 'form-label'}
+                            }) }}
+			</div>
+			<div class="col-md-6 mb-3">
+				{{ form_row(form.lastName, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'placeholder': 'Nom'
+                                },
+                                'label_attr': {'class': 'form-label'}
+                            }) }}
 			</div>
 		</div>
-	</section>
+
+		<div class="mb-3">
+			{{ form_row(form.email, {
+                            'attr': {
+                                'class': 'form-control',
+                                'placeholder': 'email@domain.com'
+                            },
+                            'label_attr': {'class': 'form-label'}
+                        }) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_row(form.password.first, {
+                            'attr': {
+                                'class': 'form-control',
+                                'placeholder': 'Mot de passe'
+                            },
+                            'label_attr': {'class': 'form-label'}
+                        }) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_row(form.password.second, {
+                            'attr': {
+                                'class': 'form-control',
+                                'placeholder': 'Répéter le mot de passe'
+                            },
+                            'label_attr': {'class': 'form-label'}
+                        }) }}
+		</div>
+
+		<button type="submit" class="btn btn-outline w-100">S'inscrire</button>
+		{{ form_end(form) }}
+
+		<p class="text-center mt-4">
+			Vous avez déjà un compte ?
+			<a href="{{ path('app.login') }}">
+				<span class="orange">Connectez-vous ici</span>
+			</a>
+		</p>
+	</div>
+
+
 {% endblock %}

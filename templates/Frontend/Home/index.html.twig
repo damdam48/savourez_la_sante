@@ -61,7 +61,7 @@
 					<a href="{{ path('app.saison', { name: saison.name }) }}">
 						<div class="card border-v card-hover">
 							<div class="card-body">
-								<h5 class="card-title text-center">{{ saison.name }}</h5>
+								<h5 class="card-title-s text-center">{{ saison.name }}</h5>
 								<img src="{{ vich_uploader_asset(saison, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ saison.name }}">
 								<div class="card-text mt-3"></div>
 							</div>
@@ -85,7 +85,7 @@
 					<a href="{{ path('app.categorie', { name: categorie.name }) }}">
 						<div class="card border-o card-hover">
 							<div class="card-body">
-								<h5 class="card-title text-center">{{ categorie.name }}</h5>
+								<h5 class="card-title-s text-center">{{ categorie.name }}</h5>
 								<img src="{{ vich_uploader_asset(categorie, 'imageFile') ?: asset('placeholder.png') }}" class="card-img-top radius" alt="{{ categorie.name }}">
 								<div class="card-text mt-3"></div>
 							</div>
@@ -96,9 +96,7 @@
 		</div>
 	</section>
 
-	<button id="scrollToTop" class="btn btn-warning" title="Retour en haut">
-		<i class="bi bi-arrow-up-circle-fill"></i>
-	</button>
+
 
 	<footer id="contact" class="">
 		<div class="separator-color-v separator-title text-center">

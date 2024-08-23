@@ -41,16 +41,30 @@
     display: block;
 }
 
-/* Styles pour le contenu de la carte */
+
 .card-body {
     padding: 15px;
 }
+
 
 .card-title {
     text-align: center;
     font-size: 1.25rem;
     margin-bottom: 15px;
+    height: 48px;
+    overflow: hidden; /* Cache le texte qui dépasse */
+    text-overflow: ellipsis; /* Ajoute "..." pour indiquer que le texte est tronqué */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limite le texte à 2 lignes */
+    -webkit-box-orient: vertical;
 }
+
+.card-title-s {
+    text-align: center;
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+}
+
 
 .card-text small {
     font-size: 0.875rem;

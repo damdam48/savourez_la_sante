@@ -3,7 +3,6 @@
 {% block body %}
 	<section>
 		<nav class="navbar navbar-expand-lg custom-navbar">
-		
 			<div class="container-fluid">
 				<a class="navbar-brand" href="{{ '/' }}">
 					<h1 class="ms-5 mb-0">Savourez la santé</h1>
@@ -15,20 +14,27 @@
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
 							<a class="nav-link active" aria-current="page" href="{{ '/' }}">Accueil</a>
-				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#recette-saison">Saison</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#recette-categorie">Categorie</a>
-						</li>
-				{% endif %}
+						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+							<li class="nav-item">
+								<a class="nav-link" href="#recette-saison">Saison</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#recette-categorie">Categorie</a>
+							</li>
+						{% endif %}
 						<li class="nav-item">
 							<a class="nav-link" href="#contact-test">Contact</a>
 						</li>
 					</ul>
+
 					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						<!-- Afficher le prénom de l'utilisateur connecté -->
+						<span class="navbar-text me-3">
+							Bonjour,
+							{{ app.user.firstName }}
+							!
+						</span>
 						<a class="btn radius btn-outline me-5" href="{{ '/logout' }}" data-turbo="false">Se déconnecter<i class="bi bi-box-arrow-right ms-2"></i>
 						</a>
 					{% else %}
@@ -37,7 +43,6 @@
 					{% endif %}
 
 					{% if is_granted('ROLE_ADMIN') %}
-
 						<a class="btn-outline btn radius text-danger me-5" href="/admin/recette">Admin</a>
 					{% endif %}
 				</div>
@@ -45,7 +50,4 @@
 		</nav>
 		<div class="separator-color-o"></div>
 	</section>
-
-
-
 {% endblock %}

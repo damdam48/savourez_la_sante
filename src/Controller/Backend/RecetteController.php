@@ -31,7 +31,7 @@ class RecetteController extends AbstractController
 
         $saisons = $this->saisonRepository->findAll();
         $recettes = $this->recetteRepository->findBy(
-            [],                    // Aucun critère spécifique de filtrage
+            [],                            // Aucun critère spécifique de filtrage
             ['createdAt' => 'DESC']       // Tri par date de création, décroissant
         );
 

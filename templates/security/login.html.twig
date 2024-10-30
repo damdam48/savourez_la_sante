@@ -17,7 +17,7 @@
 									<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Se connecter</p>
 									<form class="mx-1 mx-md-4" action="{{ path('app.login') }}" method="POST">
 										{% if error %}
-											<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+											<div class="alert alert-danger">"Email ou password invalide"</div>
 										{% endif %}
 										<div class="d-flex flex-row align-items-center mb-4">
 											<i class="fas fa-envelope fa-lg me-3 fa-fw"></i>

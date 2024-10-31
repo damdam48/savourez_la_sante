@@ -1,56 +1,54 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>
-			{% block title %}Savourez la santé
-			{% endblock %}
-		</title>
-		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-		{% block stylesheets %}
-			{{ encore_entry_link_tags('app') }}
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="Savourez la santé" content="Un site de recette basé sur indice de glicemie bas">
+	<meta name="viewport" content="width=device-width">
+	<title>
+		{% block title %}Savourez la santé
 		{% endblock %}
+	</title>
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+	{% block stylesheets %}
+	{{ encore_entry_link_tags('app') }}
+	{% endblock %}
 
-		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
+	{% block javascripts %}
+		{{ encore_entry_script_tags('app') }}
+	{% endblock %}
+</head>
 
-
-
-		{% endblock %}
-
-	</head>
-	<body>
-		{% block body %}{% endblock %}
-	</body>
-
-
-	<button id="scrollToTop" class="btn btn-warning" title="Retour en haut">
-		<i class="bi bi-arrow-up-circle-fill"></i>
-	</button>
+<body>
+	{% block body %}{% endblock %}
+</body>
 
 
+<button id="scrollToTop" class="btn btn-warning" title="Retour en haut">
+	<i class="bi bi-arrow-up-circle-fill"></i>
+</button>
 
-	<script>
-		// Afficher/Masquer le bouton en fonction du défilement
-		window.onscroll = function () {
+
+
+<script>
+	// Afficher/Masquer le bouton en fonction du défilement
+	window.onscroll = function () {
 		scrollFunction();
-		};
+	};
 
-		function scrollFunction() {
+	function scrollFunction() {
 		const scrollToTopButton = document.getElementById("scrollToTop");
 		if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-		scrollToTopButton.style.display = "block";
+			scrollToTopButton.style.display = "block";
 		} else {
-		scrollToTopButton.style.display = "none";
+			scrollToTopButton.style.display = "none";
 		}
-		}
+	}
 
-		// Défilement en haut de la page lorsqu'on clique sur le bouton
-		document.getElementById('scrollToTop').addEventListener('click', function () {
-		window.scrollTo({top: 0, behavior: 'smooth'});
-		});
-	</script>
-
+	// Défilement en haut de la page lorsqu'on clique sur le bouton
+	document.getElementById('scrollToTop').addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+</script>
 
 </html>
-
